@@ -51,9 +51,20 @@ test('home, âncoras, detalhes, atualização e retorno sem erros críticos', as
   await expect(
     page.getByRole('heading', { name: 'Funcionalidades principais' }),
   ).toBeVisible();
-  await expect(
-    page.getByRole('heading', { name: 'Resultados e benefícios' }),
-  ).toHaveCount(0);
+  const project = projectData.find((item) => item.slug === 'qa-recorder')!;
+  for (const [title, items] of [
+    ['Arquitetura e decisões técnicas', project.architecture],
+    ['Desafios técnicos', project.challenges],
+    ['Estratégia de testes e qualidade', project.testing],
+    ['Resultados e benefícios', project.results],
+  ] as const) {
+    const heading = page.getByRole('heading', { name: title, exact: true });
+    await expect(heading).toHaveCount(items.length ? 1 : 0);
+    if (items.length) {
+      const entries = heading.locator('..').getByRole('listitem');
+      await expect(entries).toHaveText(items);
+    }
+  }
   await page.reload();
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
     'QA-Recorder.',
@@ -72,6 +83,49 @@ test('home, âncoras, detalhes, atualização e retorno sem erros críticos', as
     ),
   ).toBe(true);
   expect(errors).toEqual([]);
+});
+
+test('projeto sem conteúdo opcional oculta seções vazias e links privados', async ({
+  page,
+}) => {
+  const project = {
+    ...projectData[0],
+    problem: null,
+    solution: null,
+    features: [],
+    architecture: [],
+    challenges: [],
+    testing: [],
+    results: [],
+    gallery: [],
+    repositoryUrl: null,
+    links: [],
+  };
+  await page.route('**/data/projects.json', (route) =>
+    route.fulfill({ json: [project] }),
+  );
+  await page.goto(`/#/projects/${project.slug}`);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    `${project.name}.`,
+  );
+  for (const title of [
+    'O problema',
+    'A solução',
+    'Funcionalidades principais',
+    'Arquitetura e decisões técnicas',
+    'Desafios técnicos',
+    'Estratégia de testes e qualidade',
+    'Resultados e benefícios',
+    'Galeria',
+    'Explore o projeto',
+  ])
+    await expect(
+      page.getByRole('heading', { name: title, exact: true }),
+    ).toHaveCount(0);
+  await expect(page.getByRole('link', { name: /repositório/i })).toHaveCount(0);
+  await expect(
+    page.getByRole('link', { name: 'Voltar aos projetos' }),
+  ).toBeVisible();
 });
 
 test('links internos da home têm destinos válidos e não há overflow', async ({

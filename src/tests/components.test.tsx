@@ -10,6 +10,7 @@ import {
   Experience,
 } from '../components/home/ProfessionalSections';
 import { portfolio, completePortfolio, experience } from './fixtures';
+import { formatMonth } from '../utils/content';
 
 it('renderiza informações carregadas e oculta seções e links não configurados', () => {
   render(
@@ -81,6 +82,16 @@ it('renderiza experiência, formação e distinção entre estudo e certificaç�
             credentialId: 'EXEMPLO',
             verificationUrl: 'https://example.com/verify',
           },
+          {
+            id: 'curso-concluido',
+            name: 'Curso concluído exemplo',
+            issuer: 'Emissor exemplo',
+            kind: 'course',
+            status: 'completed',
+            visible: true,
+            order: 3,
+            completionDate: '2025-02',
+          },
         ]}
       />
     </MemoryRouter>,
@@ -92,6 +103,10 @@ it('renderiza experiência, formação e distinção entre estudo e certificaç�
   ).toBeInTheDocument();
   expect(screen.getByText('Estudo em andamento')).toBeInTheDocument();
   expect(screen.getByText('Concluída')).toBeInTheDocument();
+  expect(
+    screen.getByText('Curso concluído', { exact: true }),
+  ).toBeInTheDocument();
+  expect(screen.getByText('Conclusão: fev. de 2025')).toBeInTheDocument();
   expect(
     screen.getByRole('link', { name: /verificar credencial/i }),
   ).toHaveAttribute('rel', 'noopener noreferrer');
@@ -139,15 +154,51 @@ it('apresenta o currículo carregado com cursos, previsão de formação e conta
   expect(
     screen.getByText('out. de 2026 — abr. de 2028 (previsão)'),
   ).toBeInTheDocument();
-  expect(screen.getAllByText('Curso concluído')).toHaveLength(
-    completePortfolio.certifications.length,
+  const learning = within(
+    screen.getByRole('region', { name: 'Aprender. Aplicar. Evoluir.' }),
   );
-  expect(
-    screen.queryByText('Concluída', { exact: true }),
-  ).not.toBeInTheDocument();
-  expect(
-    screen.queryByRole('link', { name: /verificar credencial/i }),
-  ).not.toBeInTheDocument();
+  const cards = learning.getAllByRole('article');
+  expect(cards).toHaveLength(completePortfolio.certifications.length);
+  completePortfolio.certifications.forEach((item, index) => {
+    const card = within(cards[index]);
+    expect(card.getByRole('heading', { name: item.name })).toBeInTheDocument();
+    expect(card.getByText(item.issuer)).toBeInTheDocument();
+    expect(
+      card.getByText(
+        item.status !== 'completed'
+          ? 'Estudo em andamento'
+          : item.kind === 'course'
+            ? 'Curso concluído'
+            : 'Concluída',
+        { exact: true },
+      ),
+    ).toBeInTheDocument();
+    for (const [label, date] of [
+      ['Conclusão', item.completionDate],
+      ['Emissão', item.issueDate],
+      ['Validade', item.expiryDate],
+    ]) {
+      if (date)
+        expect(
+          card.getByText(`${label}: ${formatMonth(date)}`),
+        ).toBeInTheDocument();
+      else
+        expect(
+          card.queryByText(new RegExp(`^${label}:`)),
+        ).not.toBeInTheDocument();
+    }
+    if (item.credentialId)
+      expect(
+        card.getByText(`Credencial: ${item.credentialId}`),
+      ).toBeInTheDocument();
+    const verification = card.queryByRole('link', {
+      name: /verificar credencial/i,
+    });
+    if (item.verificationUrl) {
+      expect(verification).toHaveAttribute('href', item.verificationUrl);
+      expect(verification).toHaveAttribute('rel', 'noopener noreferrer');
+    } else expect(verification).not.toBeInTheDocument();
+  });
   for (const link of screen.getAllByRole('link', { name: /LinkedIn/ }))
     expect(link).toHaveAttribute('href', completePortfolio.profile.linkedinUrl);
   for (const link of screen.getAllByRole('link', { name: /Enviar e-mail/ }))

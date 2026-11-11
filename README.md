@@ -114,4 +114,6 @@ O workflow está preparado, mas criar os arquivos localmente não publica o site
 4. Acompanhe **Actions → Qualidade e GitHub Pages**. O deploy depende de todas as verificações e só é executado na `main`; PRs apenas validam. Se configurar a origem depois do primeiro push, execute o workflow manualmente pela `main`.
 5. Confirme a conclusão do deploy e o endereço `https://renatobonettineto.github.io/`.
 
+Se aparecer também o workflow automático **pages build and deployment** com **Build with Jekyll**, confira a origem do Pages: ela precisa estar em **GitHub Actions**. A opção **Deploy from a branch** publica os fontes deste projeto sem o build Vite e pode indicar sucesso mesmo quando o workflow de qualidade falha. No site publicado, o HTML deve carregar JavaScript compilado em `/assets/`, e `/data/profile.json` deve responder com JSON; referências a `/src/main.tsx` indicam publicação incorreta. Após ajustar a origem, execute novamente **Qualidade e GitHub Pages** na `main`.
+
 O Vite usa `base: '/'`, apropriado ao repositório de usuário. O job de deploy tem somente as permissões de Pages/OIDC necessárias; nenhum token pessoal é exigido. O build é gerado antes do E2E para que os testes aprovem exatamente os arquivos publicados. O conteúdo profissional pode ser atualizado por JSON, sempre seguido de novo build/deploy.
