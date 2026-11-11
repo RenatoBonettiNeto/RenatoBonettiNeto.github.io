@@ -11,6 +11,46 @@ async function openMenu(page: Page) {
   if (await toggle.isVisible()) await toggle.click();
 }
 
+test('ícones sociais exibem descrições no hover e no foco do teclado', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const social = page.locator('.hero-note .social-links');
+  await expect(social).toBeVisible();
+  const tooltip = social.getByRole('tooltip');
+  await expect(tooltip).toHaveCount(0);
+  for (const [name, description] of [
+    ['GitHub', 'Ver meus repositórios no GitHub'],
+    ['LinkedIn', 'Ver meu perfil profissional no LinkedIn'],
+    ['Enviar e-mail', 'Enviar uma mensagem por e-mail'],
+  ]) {
+    const link = social.getByRole('link', { name: new RegExp(name) });
+    await link.hover();
+    await expect(tooltip).toHaveText(description);
+    await expect(link).toHaveAccessibleDescription(description);
+    await tooltip.hover();
+    await expect(tooltip).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(tooltip).toHaveCount(0);
+    await page.mouse.move(0, 0);
+    await page.locator('.hero-actions a').first().focus();
+    await link.focus();
+    await expect(tooltip).toHaveText(description);
+    const bounds = await tooltip.boundingBox();
+    expect(bounds).not.toBeNull();
+    expect(bounds!.x).toBeGreaterThanOrEqual(0);
+    expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(
+      await page.evaluate(() => innerWidth),
+    );
+    await page.keyboard.press('Tab');
+    await expect(link).not.toBeFocused();
+    await page.locator('.hero-actions a').first().focus();
+    await expect(tooltip).toHaveCount(0);
+  }
+  await page.locator('.hero-actions a').first().focus();
+  await expect(tooltip).toHaveCount(0);
+});
+
 test('header acompanha a seção durante o scroll sem alterar a URL', async ({
   page,
 }) => {
