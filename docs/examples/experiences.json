@@ -1,0 +1,14 @@
+[
+  {
+    "id": "empresa-exemplo",
+    "company": "Nome real da empresa",
+    "position": "Cargo confirmado",
+    "startDate": null,
+    "endDate": null,
+    "current": true,
+    "description": "Substitua pelas atividades realmente desempenhadas.",
+    "technologies": ["Playwright", "TypeScript"],
+    "visible": false,
+    "order": 1
+  }
+]

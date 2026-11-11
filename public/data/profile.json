@@ -1,0 +1,31 @@
+{
+  "id": "renato-bonetti-neto",
+  "name": "Renato Bonetti Neto",
+  "brand": "Renato.",
+  "role": "QA Automation | Playwright · TypeScript",
+  "location": "Braço do Norte, SC",
+  "languages": ["Inglês — básico"],
+  "photo": {
+    "src": "/assets/renato-bonetti.jpg",
+    "alt": "Renato Bonetti Neto em sua formatura, com capelo e beca azul",
+    "zoom": 1.75,
+    "originY": 10
+  },
+  "intro": "Analista de Qualidade de Software com experiência em sistemas ERP, automação de testes E2E com Playwright e TypeScript, APIs REST e validação de dados.",
+  "about": [
+   "Sou Analista de Qualidade de Software (QA), com experiência em sistemas ERP, análise de requisitos e validação de regras de negócio e processos corporativos. Atuo com testes funcionais, exploratórios, regressivos, de integração e de APIs, contribuindo para a identificação de defeitos e a confiabilidade das entregas.",
+   "No dia a dia, participo da análise de funcionalidades e fluxos críticos, investigação de inconsistências e validação de correções em conjunto com a equipe de desenvolvimento. Utilizo SQL e PostgreSQL para consultas, verificação de dados e apoio à análise de problemas.",
+   "Tenho experiência em automação de testes com Playwright e TypeScript, desenvolvendo cenários End-to-End (E2E), utilizando Page Object Model (POM), fixtures e preparação de massas de dados via API.",
+   "Também desenvolvo o QA-Recorder, ferramenta de apoio à automação de testes construída com Electron, React, Node.js, TypeScript e Playwright. O projeto contempla gravação de interações, geração de scripts automatizados, gerenciamento de massas de dados e reprodução de cenários de teste, utilizando Git e GitHub para versionamento e evolução contínua.",
+   "Minha experiência anterior em suporte técnico e sistemas ERP contribuiu para uma visão mais abrangente dos processos de negócio, das necessidades dos usuários e dos desafios envolvidos na manutenção de sistemas corporativos.",
+   "Busco aprimorar continuamente meus conhecimentos em QA Automation e Quality Engineering, combinando visão de negócio, capacidade analítica e desenvolvimento de soluções que contribuam para a qualidade e confiabilidade do software."
+
+  ],
+  "contactHeadline": "Vamos conversar sobre qualidade?",
+  "contactText": "Estou aberto a conversar sobre oportunidades profissionais em QA e automação de testes. Conheça meu trabalho e entre em contato pelos canais abaixo.",
+  "githubUrl": "https://github.com/RenatoBonettiNeto",
+  "linkedinUrl": "https://www.linkedin.com/in/renato-bonetti-neto/",
+  "email": "bonettineto.renato03@gmail.com",
+  "resumeUrl": null,
+  "siteUrl": "https://renatobonettineto.github.io/"
+}

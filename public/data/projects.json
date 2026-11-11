@@ -1,0 +1,90 @@
+[
+  {
+    "id": "qa-recorder",
+    "slug": "qa-recorder",
+    "name": "QA-Recorder",
+    "category": "Desktop · QA e automação · Uso interno",
+    "summary": "Da reprodução de um chamado a um cenário executável com evidências.",
+    "description": "Aplicação desktop privada que desenvolvo e mantenho, utilizada internamente na empresa em que trabalho. Reúne gravação de fluxos, geração e execução de testes Playwright e organização de dados e evidências para apoiar suporte, desenvolvimento e QA na reprodução de problemas e na validação de correções.",
+    "technologies": [
+      "Electron",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Playwright",
+      "Vite",
+      "Monaco Editor",
+      "FFmpeg",
+      "GitHub Actions"
+    ],
+    "problem": "Na rotina de atendimento e validação de sistemas ERP, a descrição de um chamado nem sempre é suficiente para entender o caminho até um problema. O suporte reproduz o fluxo, o desenvolvimento investiga e corrige, e QA precisa reconstruir o cenário para retestar. Repetir manualmente essas etapas, recuperar os dados utilizados e reunir evidências em locais separados dificulta a comunicação e gera retrabalho. O projeto nasceu para registrar esse contexto e permitir que o mesmo cenário acompanhe as etapas do atendimento.",
+    "solution": "Desenvolvi uma aplicação desktop que captura as interações realizadas no navegador e as transforma em testes Playwright reutilizáveis. O cenário pode ser revisado, editado e executado novamente, com diferentes massas de dados e evidências associadas. Código, resultados, vídeos, capturas e observações ficam organizados por chamado e execução. A exportação e a importação de pacotes permitem compartilhar esse conjunto entre instalações, apoiando a colaboração entre suporte, desenvolvimento e qualidade sem exigir a reconstrução do fluxo a partir de uma descrição textual.",
+    "features": [
+      {
+        "title": "Gravação e geração de testes",
+        "description": "Captura das ações realizadas no navegador e geração de cenários Playwright em TypeScript, organizados por chamado."
+      },
+      {
+        "title": "Revisão de verificações",
+        "description": "Captura de títulos, URLs e mensagens observadas durante a gravação, com revisão dos resultados esperados antes de incluir verificações no teste."
+      },
+      {
+        "title": "Continuação de cenários",
+        "description": "Nos cenários compatíveis, permite retomar a captura após o fluxo existente ou a partir de um ponto em Debug, salvando um novo teste e preservando o original."
+      },
+      {
+        "title": "Execução individual e em lote",
+        "description": "Execução de cenários, seleções ou pastas nos modos sem janela, com janela e Debug, com acompanhamento de progresso, cancelamento e resultados."
+      },
+      {
+        "title": "Massas de dados e parametrização",
+        "description": "Criação, edição, duplicação e seleção de massas para reutilizar um cenário com diferentes valores, incluindo revisão de vínculos entre os dados e o código."
+      },
+      {
+        "title": "Editor e análise de testes",
+        "description": "Gerenciamento de arquivos e edição com Monaco Editor. A análise da estrutura do código aponta oportunidades de revisão, sem modificar automaticamente os testes."
+      },
+      {
+        "title": "Evidências e observações",
+        "description": "Vídeo opcional, screenshots, observações e resultados associados aos cenários e às execuções para documentar o comportamento encontrado."
+      },
+      {
+        "title": "Histórico e revisão",
+        "description": "Consulta a cenários, dados, evidências e resultados persistidos, com organização por chamado e controle da revisão dos testes após alterações."
+      },
+      {
+        "title": "Compartilhamento de chamados",
+        "description": "Exportação e importação de pacotes ZIP com cenários e evidências selecionadas, massas de dados e arquivos necessários à reprodução dos fluxos."
+      }
+    ],
+    "architecture": [
+      "Electron e Node.js integram o navegador de testes, os processos de execução e o sistema de arquivos. A interface em React se comunica com os serviços do processo principal por uma camada de preload e contratos IPC, com isolamento de contexto.",
+      "TypeScript é utilizado na aplicação e nos testes gerados. Vite prepara a interface e os recursos do editor Monaco, que permite trabalhar com os arquivos sem sair do aplicativo.",
+      "O Playwright sustenta a captura, a execução e a depuração. A execução considera a configuração, os imports e as fixtures do projeto, enquanto a análise da estrutura do código apoia a parametrização, a continuação e os diagnósticos do editor.",
+      "Os cenários e seus metadados são persistidos localmente em arquivos, com resultados separados por execução. FFmpeg apoia o processamento de vídeo, e os pacotes ZIP transportam os arquivos e suas associações entre instalações."
+    ],
+    "challenges": [
+      "Lidar com interfaces dinâmicas de sistemas ERP, incluindo iframes, autocomplete, tabelas e atualizações assíncronas. A posição de uma linha ou um seletor gravado nem sempre representa uma identidade estável, exigindo contexto e revisão para a reprodução do cenário.",
+      "Evoluir um cenário sem sobrescrever sua origem ou perder imports, arquivos de apoio e vínculos com as massas de dados. A continuação e a reconciliação usam análise estrutural, verificações de integridade e revisão nos casos ambíguos.",
+      "Coordenar gravação, execução, edição e persistência, tratando concorrência, cancelamento, arquivos com alterações pendentes e encerramento do aplicativo sem confundir os resultados de atividades distintas.",
+      "Manter a integração com o Codegen e o Inspector do Playwright compatível com a versão utilizada. Os adaptadores são isolados e verificados, e os limites de suporte são considerados antes de iniciar operações como a continuação."
+    ],
+    "testing": [
+      "Testes unitários verificam regras de geração, análise do código, parametrização, integridade dos arquivos, histórico, pacotes e transições de estado, incluindo rejeições e cenários de erro.",
+      "Testes de integração com navegador real e interface Electron exercitam gravação, reprodução, continuação, revisão, salvamento, evidências e cancelamento. Fixtures locais permitem validar esses fluxos sem depender dos sistemas corporativos.",
+      "Workflows no GitHub Actions estão configurados para compilação, validação de metadados, testes unitários e integrações em Windows e Linux. A validação de release inclui o conjunto completo de integrações e preserva diagnósticos quando há falhas.",
+      "A estratégia distingue capturar ações de verificar regras de negócio. Um cenário executado sem erros confirma apenas as verificações presentes no teste; resultados esperados, dados e pontos não cobertos pela captura precisam de revisão humana."
+    ],
+    "results": [
+      "O projeto está em uso interno na empresa em que trabalho, com desenvolvimento e evolução realizados por mim para apoiar a rotina de suporte, desenvolvimento e QA.",
+      "Cenários executáveis, massas de dados, observações e evidências ficam reunidos em um fluxo de trabalho que preserva o contexto necessário à investigação e ao reteste de problemas.",
+      "A reprodução registrada pode ser reutilizada e compartilhada entre as etapas do atendimento, oferecendo uma base prática para validar correções e ampliar a automação dos cenários."
+    ],
+    "gallery": [],
+    "links": [],
+    "repositoryUrl": null,
+    "image": null,
+    "visible": true,
+    "order": 1
+  }
+]

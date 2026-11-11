@@ -1,0 +1,46 @@
+[
+  {
+    "id": "automation",
+    "name": "Automação",
+    "description": "Cenários que podem ser reproduzidos.",
+    "items": [
+      "Playwright",
+      "TypeScript",
+      "Testes E2E",
+      "Page Object Model",
+      "Fixtures"
+    ],
+    "visible": true,
+    "order": 1
+  },
+  {
+    "id": "quality",
+    "name": "Qualidade de software",
+    "description": "Olhar crítico para cada comportamento.",
+    "items": [
+      "Testes funcionais",
+      "Testes de regressão",
+      "Testes exploratórios",
+      "Testes de integração",
+      "Web, desktop e mobile"
+    ],
+    "visible": true,
+    "order": 2
+  },
+  {
+    "id": "data",
+    "name": "APIs e dados",
+    "description": "Validação além da interface.",
+    "items": ["APIs REST", "Postman", "PostgreSQL", "SQL", "Massas via API"],
+    "visible": true,
+    "order": 3
+  },
+  {
+    "id": "tools",
+    "name": "Ferramentas e desenvolvimento",
+    "description": "Qualidade integrada ao desenvolvimento.",
+    "items": ["Git", "GitHub", "Docker", "Node.js", "CI em projetos pessoais"],
+    "visible": true,
+    "order": 4
+  }
+]

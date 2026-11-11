@@ -1,0 +1,24 @@
+[
+  {
+    "id": "projeto-exemplo",
+    "slug": "projeto-exemplo",
+    "name": "Nome do projeto",
+    "category": "Categoria do projeto",
+    "summary": "Uma frase curta sobre o projeto.",
+    "description": "Descreva a finalidade real da aplicação.",
+    "technologies": ["TypeScript"],
+    "problem": null,
+    "solution": null,
+    "features": [],
+    "architecture": [],
+    "challenges": [],
+    "testing": [],
+    "results": [],
+    "gallery": [],
+    "image": null,
+    "repositoryUrl": null,
+    "links": [],
+    "visible": false,
+    "order": 2
+  }
+]

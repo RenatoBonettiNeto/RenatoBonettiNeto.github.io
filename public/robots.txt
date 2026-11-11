@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://renatobonettineto.github.io/sitemap.xml

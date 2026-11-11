@@ -1,0 +1,13 @@
+[
+  {
+    "id": "curso-exemplo",
+    "course": "Nome real do curso",
+    "institution": "Nome real da instituição",
+    "startDate": null,
+    "endDate": null,
+    "status": "in-progress",
+    "description": null,
+    "visible": false,
+    "order": 1
+  }
+]

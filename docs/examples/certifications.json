@@ -1,0 +1,34 @@
+[
+  {
+    "id": "certificacao-exemplo",
+    "kind": "certification",
+    "name": "Nome real da certificação",
+    "issuer": "Instituição emissora",
+    "status": "completed",
+    "issueDate": null,
+    "expiryDate": null,
+    "credentialId": null,
+    "verificationUrl": null,
+    "visible": false,
+    "order": 1
+  },
+  {
+    "id": "estudo-exemplo",
+    "kind": "certification",
+    "name": "Nome do estudo em andamento",
+    "issuer": "Instituição de ensino",
+    "status": "in-progress",
+    "visible": false,
+    "order": 2
+  },
+  {
+    "id": "curso-complementar-exemplo",
+    "kind": "course",
+    "name": "Nome real do curso complementar",
+    "issuer": "Instituição de ensino",
+    "status": "completed",
+    "completionDate": null,
+    "visible": false,
+    "order": 3
+  }
+]

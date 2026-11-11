@@ -1,0 +1,138 @@
+[
+  {
+    "id": "neo-sistemas-qa",
+    "company": "Neo Sistemas",
+    "position": "Analista de Qualidade de Software (QA)",
+    "startDate": "2025-09",
+    "endDate": null,
+    "current": true,
+    "description": "Atuação como Analista de Qualidade de Software (QA) em sistemas ERP, participando da análise e validação de requisitos, regras de negócio e fluxos críticos dos módulos comercial, financeiro, fiscal, contábil, logístico, de custos, frota e produção.\n \n- Planejamento e execução de testes funcionais, exploratórios, regressivos, de integração e de API, contemplando cenários positivos, negativos e validação de requisitos e regras de negócio\n- Validação de APIs REST, analisando requisições e respostas HTTP, payloads, códigos de status, autenticação e tratamento de erros.\n- Utilização de SQL e PostgreSQL para consultas e validação de dados, investigação de inconsistências, análise de defeitos e conferência de cálculos e regras de negócio.\n- Identificação, registro, análise, acompanhamento e reteste de defeitos, colaborando com a equipe de desenvolvimento na investigação de causas e validação de correções.\n- Desenvolvimento e manutenção de testes automatizados utilizando Playwright e TypeScript, incluindo cenários End-to-End (E2E), Page Object Model (POM), fixtures, preparação de massas de dados via API e validação de fluxos de negócio.\n- Desenvolvimento e evolução do QA-Recorder, ferramenta de apoio à automação de testes construída com Electron, React, TypeScript, Node.js e Playwright, contemplando gravação de interações, geração de scripts automatizados, gerenciamento de massas de dados e reprodução de cenários de teste. Utilização de Git e GitHub para controle de versões, gerenciamento de branches e acompanhamento das alterações do projeto.\n- Participação em iniciativas de melhoria contínua dos processos de Quality Assurance, visando à padronização dos testes, otimização das atividades de validação e maior eficiência na identificação e reprodução de defeitos.",
+    "technologies": [
+      "Playwright",
+      "TypeScript",
+      "QA Automation",
+      "Quality Engineering",
+      "APIs REST",
+      "PostgreSQL",
+      "SQL"
+    ],
+    "visible": true,
+    "order": 1
+  },
+  {
+    "id": "neo-sistemas-suporte-erp",
+    "company": "Neo Sistemas",
+    "position": "Analista de Suporte a Sistemas ERP",
+    "startDate": "2024-06",
+    "endDate": "2025-09",
+    "current": false,
+    "description": "Atuação no suporte técnico a sistemas ERP, realizando análise,\ndiagnóstico e resolução de incidentes relacionados a módulos\nfinanceiro, fiscal e operacional.\n\nAtendimento e apoio a usuários, com foco na compreensão das regras\nde negócio e identificação da causa raiz de problemas reportados,\natuando como elo entre usuários e equipe técnica.\n\nAnálise de dados e validação de informações diretamente no banco de\ndados PostgreSQL, utilizando consultas SQL para conferência de\nregistros, correção de inconsistências e apoio à investigação de erros.\n\nRegistro, acompanhamento e documentação de chamados técnicos,\ncontribuindo para melhoria contínua dos processos e da qualidade do sistema.\n\nA experiência em suporte proporcionou forte entendimento do\nfuncionamento do sistema, das regras de negócio e dos principais\npontos de falha enfrentados pelos usuários.",
+    "technologies": [
+      "ERP",
+      "PostgreSQL",
+      "SQL",
+      "Análise de problemas",
+      "Atendimento Técnico"
+    ],
+    "visible": true,
+    "order": 2
+  },
+  {
+    "id": "mkm-analista-noc",
+    "company": "MKM Internet Solution Provider",
+    "position": "Analista de NOC",
+    "startDate": "2024-04",
+    "endDate": "2024-07",
+    "current": false,
+    "description": "Atuação em Network Operation Center (NOC), realizando monitoramento\ne acompanhamento da infraestrutura de rede, identificando incidentes,\nfalhas e degradações de serviço.\n\nAnálise de alertas, verificação de disponibilidade de sistemas\ne apoio na resolução de incidentes, seguindo procedimentos técnicos\ne realizando escalonamento quando necessário.\n\nAcompanhamento de indicadores e registros de ocorrências, contribuindo\npara a estabilidade dos serviços e continuidade operacional.\n\nA experiência no NOC contribuiu para o desenvolvimento do raciocínio\nanalítico, atenção a detalhes e entendimento de ambientes técnicos.",
+    "technologies": [
+      "Redes de computadores",
+      "Monitoração de sistemas",
+      "Análise de Incidentes",
+      "Gestão de infraestrutura de TI",
+      "Comunicação técnica"
+    ],
+    "visible": true,
+    "order": 3
+  },
+  {
+    "id": "mkm-apoio-usuario-informatica",
+    "company": "MKM Internet Solution Provider",
+    "position": "Técnico de Apoio ao Usuário de Informática",
+    "startDate": "2023-01",
+    "endDate": "2024-04",
+    "current": false,
+    "description": "Atuação no atendimento e suporte técnico a usuários, prestando apoio\nremoto e presencial para resolução de problemas relacionados a sistemas,\nhardware e conectividade.\n\nDiagnóstico e solução de incidentes, realizando orientações técnicas\ne garantindo a continuidade das atividades dos usuários.\n\nRegistro e acompanhamento de chamados, prezando pela qualidade do\natendimento e pela correta comunicação das soluções aplicadas.\n\nA experiência fortaleceu habilidades de comunicação, análise de problemas\ne entendimento das necessidades do usuário final.",
+    "technologies": [
+      "Comunicação",
+      "Suporte técnico",
+      "Atendimento ao cliente",
+      "Diagnóstico de Problemas",
+      "Tecnologia da informação"
+    ],
+    "visible": true,
+    "order": 4
+  },
+  {
+    "id": "ibmf-planejamento-producao",
+    "company": "Grupo IBMF — Arquitech / Metasul",
+    "position": "Planejamento e Controle de Produção",
+    "startDate": "2022-07",
+    "endDate": "2022-12",
+    "current": false,
+    "description": "Atuação no planejamento e controle da produção, sendo responsável\npela organização do fluxo produtivo, definição de prioridades,\nsequenciamento de ordens e acompanhamento da execução.\n\nCadastro de novos itens, controle de estoque e conferência de produção,\ngarantindo que os processos ocorressem conforme o planejamento previsto.\n\nAcompanhamento de prazos, volumes e ordens de produção, contribuindo\npara a eficiência operacional e redução de inconsistências no processo produtivo.\n\nA experiência fortaleceu habilidades de organização, análise de processos\ne visão sistêmica.",
+    "technologies": [
+      "Planejamento de produção",
+      "Controle de processos",
+      "Análise de processos",
+      "Controle de estoque"
+    ],
+    "visible": true,
+    "order": 5
+  },
+  {
+    "id": "ibmf-auxiliar-almoxarifado",
+    "company": "Grupo IBMF — Arquitech / Metasul",
+    "position": "Auxiliar de Almoxarifado",
+    "startDate": "2021-07",
+    "endDate": "2022-07",
+    "current": false,
+    "description": "Atuação no controle de estoque, conferência de materiais e apoio\nao abastecimento da produção, garantindo a disponibilidade dos insumos.\n\nRealização de conferência de produtos, organização do almoxarifado\ne apoio na movimentação de materiais conforme demanda produtiva.\n\nA experiência contribuiu para o desenvolvimento do senso de responsabilidade,\natenção a detalhes e organização.",
+    "technologies": [
+      "Controle de estoque",
+      "Conferência de Materiais",
+      "Trabalho em equipe"
+    ],
+    "visible": true,
+    "order": 6
+  },
+  {
+    "id": "ibmf-linha-producao",
+    "company": "Grupo IBMF — Arquitech / Metasul",
+    "position": "Alimentador de Linha de Produção",
+    "startDate": "2020-01",
+    "endDate": "2021-07",
+    "current": false,
+    "description": "Atuação no abastecimento da linha de produção, garantindo o fluxo\ncontínuo de materiais e apoio às atividades operacionais.\n\nCumprimento de procedimentos e padrões definidos, contribuindo\npara a continuidade e eficiência do processo produtivo.",
+    "technologies": ["Trabalho em equipe", "Disciplina Operacional"],
+    "visible": true,
+    "order": 7
+  },
+  {
+    "id": "senai-linha-producao",
+    "company": "SENAI/SC",
+    "position": "Alimentador de Linha de Produção",
+    "startDate": "2018-08",
+    "endDate": "2019-12",
+    "current": false,
+    "description": "Atuação como aprendiz pelo SENAI, com participação em atividades\npráticas na área industrial, aliando aprendizado teórico e prático\nno ambiente produtivo.\n\nA experiência contribuiu para o desenvolvimento de disciplina,\nresponsabilidade e entendimento de processos industriais.",
+    "technologies": [
+      "Disciplina Operacional",
+      "Trabalho em equipe",
+      "Aprendizagem Industrial",
+      "Processos industriais"
+    ],
+    "visible": true,
+    "order": 8
+  }
+]
