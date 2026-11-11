@@ -6,7 +6,7 @@
     "startDate": "2026-10",
     "endDate": "2028-04",
     "status": "in-progress",
-    "description": "Bacharelado em Sistemas de Informação, com formação voltada a desenvolvimento de software, banco de dados, engenharia de software e sistemas corporativos.\n\nDurante a graduação, atuei profissionalmente com sistemas ERP, validações fiscais, banco de dados e qualidade de software, aplicando na prática conceitos de modelagem, regras de negócio e arquitetura de sistemas.\n\nTrabalho de Conclusão de Curso com nota máxima, desenvolvido como uma aplicação web para gerenciamento profissional de funcionários e automação de processos de RH.",
+    "description": "Pós-graduação em Engenharia de Software com foco no aprofundamento de conhecimentos em arquitetura de software, desenvolvimento de aplicações, APIs, bancos de dados, cloud, DevOps, segurança, observabilidade, qualidade e testes de software.\nFormação voltada ao desenvolvimento de uma visão mais ampla de engenharia, complementando minha atuação profissional em QA e automação de testes.",
     "visible": true,
     "order": 1
   },
@@ -17,7 +17,7 @@
     "startDate": "2022-01",
     "endDate": "2025-12",
     "status": "completed",
-    "description": "Pós-graduação em Engenharia de Software com foco no aprofundamento de conhecimentos em arquitetura de software, desenvolvimento de aplicações, APIs, bancos de dados, cloud, DevOps, segurança, observabilidade, qualidade e testes de software.\nFormação voltada ao desenvolvimento de uma visão mais ampla de engenharia, complementando minha atuação profissional em QA e automação de testes.",
+    "description": "Bacharelado em Sistemas de Informação, com formação voltada a desenvolvimento de software, banco de dados, engenharia de software e sistemas corporativos.\n\nDurante a graduação, atuei profissionalmente com sistemas ERP, validações fiscais, banco de dados e qualidade de software, aplicando na prática conceitos de modelagem, regras de negócio e arquitetura de sistemas.\n\nTrabalho de Conclusão de Curso com nota máxima, desenvolvido como uma aplicação web para gerenciamento profissional de funcionários e automação de processos de RH.",
     "visible": true,
     "order": 2
   }
