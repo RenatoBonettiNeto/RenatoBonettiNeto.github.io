@@ -11,6 +11,75 @@ async function openMenu(page: Page) {
   if (await toggle.isVisible()) await toggle.click();
 }
 
+test('header acompanha a seção durante o scroll sem alterar a URL', async ({
+  page,
+}) => {
+  await page.goto('/');
+  await expect(page.locator('#about')).toBeAttached();
+  const current = page.locator('#main-navigation a[aria-current="location"]');
+  const url = page.url();
+  await expect(current).toHaveCount(0);
+  const sections = await page
+    .locator('#main-navigation a[href^="#/#"]')
+    .evaluateAll((links) =>
+      links.map((link) => link.getAttribute('href')!.split('#').at(-1)!),
+    );
+  expect(sections).toContain('experience');
+  for (const id of sections) {
+    await page
+      .locator(`#${id}`)
+      .evaluate((element) => element.scrollIntoView({ behavior: 'instant' }));
+    await expect(current).toHaveCount(1);
+    await expect(current).toHaveAttribute('href', `#/#${id}`);
+    await expect(page).toHaveURL(url);
+  }
+  await page.evaluate(() =>
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: 'instant',
+    }),
+  );
+  await expect(current).toHaveAttribute('href', '#/#contact');
+  await openMenu(page);
+  await expect(current).toBeVisible();
+  await expect(current).toHaveCSS('text-decoration-line', 'underline');
+  await page
+    .getByRole('navigation')
+    .getByRole('link', { name: 'Sobre', exact: true })
+    .click();
+  await expect(current).toHaveAttribute('href', '#/#about');
+  await expect(page).toHaveURL(/#\/#about$/);
+  await page
+    .locator('#experience')
+    .evaluate((element) => element.scrollIntoView({ behavior: 'instant' }));
+  await expect(current).toHaveAttribute('href', '#/#experience');
+  await expect(page).toHaveURL(/#\/#about$/);
+  for (const id of [...sections].reverse()) {
+    await page
+      .locator(`#${id}`)
+      .evaluate((element) => element.scrollIntoView({ behavior: 'instant' }));
+    await expect(current).toHaveAttribute('href', `#/#${id}`);
+  }
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  await expect(current).toHaveCount(0);
+  await page.goto('/#/projects/qa-recorder');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'QA-Recorder.',
+  );
+  await expect(current).toHaveCount(0);
+  await page.getByRole('link', { name: 'Voltar aos projetos' }).click();
+  await expect(current).toHaveAttribute('href', '#/#projects');
+  await page.goto('/#/#experience');
+  await expect(current).toHaveAttribute('href', '#/#experience');
+  await page.reload();
+  await expect(current).toHaveAttribute('href', '#/#experience');
+  await page.goto('/#/caminho-inexistente');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(
+    'fora do roteiro',
+  );
+  await expect(current).toHaveCount(0);
+});
+
 test('home, âncoras, detalhes, atualização e retorno sem erros críticos', async ({
   page,
 }) => {

@@ -1,14 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { GitFork, Menu, X, ArrowUpRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import type { PortfolioData } from '../../types/content';
 import { navigation, sectionPath } from '../../utils/content';
 import { ExternalLink } from '../common/ExternalLink';
+import { useActiveSection } from '../../hooks/useActiveSection';
 
 export function Header({ data }: { data: PortfolioData }) {
   const [open, setOpen] = useState(false);
   const menuButton = useRef<HTMLButtonElement>(null);
+  const header = useRef<HTMLElement>(null);
   const location = useLocation();
+  const sections = useMemo(() => navigation(data), [data]);
+  const activeSection = useActiveSection(
+    sections,
+    location.pathname === '/',
+    header,
+  );
   useEffect(() => {
     if (!open) return;
     function onEscape(event: KeyboardEvent) {
@@ -21,7 +29,7 @@ export function Header({ data }: { data: PortfolioData }) {
     return () => document.removeEventListener('keydown', onEscape);
   }, [open]);
   return (
-    <header className="site-header">
+    <header ref={header} className="site-header">
       <div className="container header-inner">
         <Link
           to="/"
@@ -49,11 +57,11 @@ export function Header({ data }: { data: PortfolioData }) {
           aria-label="Navegação principal"
           className={open ? 'navigation is-open' : 'navigation'}
         >
-          {navigation(data).map(({ id, label }) => (
+          {sections.map(({ id, label }) => (
             <Link
               key={id}
               to={sectionPath(id)}
-              aria-current={location.hash === `#${id}` ? 'location' : undefined}
+              aria-current={activeSection === id ? 'location' : undefined}
               onClick={() => setOpen(false)}
             >
               {label}
